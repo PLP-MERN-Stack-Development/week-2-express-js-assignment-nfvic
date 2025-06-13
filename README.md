@@ -61,3 +61,164 @@ Your work will be automatically submitted when you push to your GitHub Classroom
 - [Express.js Documentation](https://expressjs.com/)
 - [RESTful API Design Best Practices](https://restfulapi.net/)
 - [HTTP Status Codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) 
+
+
+# 🚀 Product API – Week 2 Assignment
+
+A simple RESTful API built using Express.js that allows CRUD operations on a list of products, with middleware, error handling, and advanced features like filtering, search, and pagination.
+
+---
+
+## 📦 Setup & Installation
+
+1. Clone the repository :
+
+   ```bash
+   git clone https://github.com/PLP-MERN-Stack-Development/week-2-express-js-assignment-nfvic.git
+   cd week-2-express-js-assignment-nfvic.git
+   
+2. Install the dependencies using pnpm:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Start the server:
+
+   ```bash
+   node server.js
+   ```
+
+---
+
+## 🔐 Authentication
+
+All API requests require an API key in the headers:
+
+```
+x-api-key: 123456
+```
+
+---
+
+## 📁 Environment Variables
+
+Create a `.env` file (optional for now), but the structure should match:
+
+```
+PORT=3000
+API_KEY=123456
+```
+
+> You don't need dotenv yet, but include this if you decide to use environment variables later.
+
+---
+
+## 📚 API Endpoints
+
+### GET `/`
+
+* Welcome message
+
+---
+
+### GET `/api/products`
+
+* Returns a list of products
+
+#### Optional Query Parameters:
+
+* `category=electronics` – filter by category
+* `search=phone` – search name or description
+* `page=1&limit=5` – pagination
+
+#### Example:
+
+```bash
+curl -H "x-api-key: 123456" http://localhost:3000/api/products?category=electronics&page=1&limit=2
+```
+
+---
+
+### GET `/api/products/:id`
+
+* Returns a single product by ID
+
+---
+
+### POST `/api/products`
+
+* Creates a new product
+
+#### Request body:
+
+```json
+{
+  "name": "Blender",
+  "description": "500W high-speed blender",
+  "price": 99.99,
+  "category": "kitchen",
+  "inStock": true
+}
+```
+
+---
+
+### PUT `/api/products/:id`
+
+* Updates an existing product by ID
+
+---
+
+### DELETE `/api/products/:id`
+
+* Deletes a product by ID
+
+---
+
+### GET `/api/products/stats`
+
+* Returns statistics:
+
+  * Total products
+  * In-stock / Out-of-stock count
+  * Product count by category
+  * Average price
+
+---
+
+## 🧪 Testing
+
+Use tools like [Postman](https://www.postman.com/), [Insomnia](https://insomnia.rest/), or `curl`:
+
+Example:
+
+```bash
+curl -H "x-api-key: 123456" http://localhost:3000/api/products
+```
+
+---
+
+## 📁 File Structure
+
+```
+├── server.js
+├── .env.example
+├── README.md
+├── package.json
+```
+
+---
+
+## ✅ Features Implemented
+
+* [x] Express.js setup
+* [x] Full RESTful CRUD routes
+* [x] Custom middleware:
+  * Logger
+  * Auth
+  * JSON parser
+  * Input validation
+* [x] Error handling with global handler
+* [x] Filtering, pagination, search
+* [x] Statistics endpoint
